@@ -116,25 +116,17 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	while true do
-        if Config.BlipVisible then
-          if not blipvisible then
-			for _, info in pairs(Config.PosList.zone) do
-				info.blip = AddBlipForCoord(info.pos)
-				SetBlipSprite(info.blip, Config.Blip_Sprite)
-				SetBlipDisplay(info.blip, Config.Blip_Display)
-				SetBlipScale(info.blip, Config.Blip_Scale)
-				SetBlipColour(info.blip, Config.Blip_Color)
-				SetBlipAsShortRange(info.blip, true)
-				BeginTextCommandSetBlipName("STRING")
-				AddTextComponentString(Config.Blip_Name)
-				EndTextCommandSetBlipName(info.blip)
-                blipvisible = true         
-            end
-          end
-          Citizen.Wait(3000)
-        else
-            break
+    if Config.BlipVisible then
+		for _, info in pairs(Config.PosList.zone) do
+			info.blip = AddBlipForCoord(info.pos)
+			SetBlipSprite(info.blip, Config.Blip_Sprite)
+			SetBlipDisplay(info.blip, Config.Blip_Display)
+			SetBlipScale(info.blip, Config.Blip_Scale)
+			SetBlipColour(info.blip, Config.Blip_Color)
+			SetBlipAsShortRange(info.blip, true)
+			BeginTextCommandSetBlipName("STRING")
+			AddTextComponentString(Config.Blip_Name)
+			EndTextCommandSetBlipName(info.blip)        
         end
-	end
+    end
 end)
