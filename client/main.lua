@@ -102,13 +102,16 @@ Citizen.CreateThread(function()
                 local pCoords = GetEntityCoords(pPed)
                 local marker = false
                 if #(pCoords - v.pos) < Config.MarkerDistance then
-                    if not marker then
-                        DrawMarker(Config.Marker, v.pos, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerScale.x,Config.MarkerScale.y,Config.MarkerScale.z, Config.MarkerColor.r,Config.MarkerColor.g,Config.MarkerColor.b, 100, true, true, 2, false, false, false, false)
-                        marker = true
-                    end
+                    DrawMarker(Config.Marker, v.pos, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.MarkerScale.x,Config.MarkerScale.y,Config.MarkerScale.z, Config.MarkerColor.r,Config.MarkerColor.g,Config.MarkerColor.b, 100, true, true, 2, false, false, false, false)
+                    marker = true
                 end
             end
-            Wait(1)
+
+            if marker then
+                Wait(1)
+            else
+                Wait(250)
+            end
         end
     end
 end)
